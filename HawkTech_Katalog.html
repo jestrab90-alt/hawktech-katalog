@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HawkTech s.r.o. – Katalog strojů</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #111827;
+    --navy-mid:   #1E3A5F;
+    --navy-card:  #1A2D44;
+    --steel:      #4A90D9;
+    --steel-lt:   #8EB8E2;
+    --light-bg:   #F0F4F8;
+    --card-bg:    #E2E8F0;
+    --gold:       #F0B429;
+    --white:      #FFFFFF;
+    --text-dark:  #1C2B4A;
+    --muted:      #6B7E99;
+    --body-font:  'Inter', Arial, sans-serif;
+    --slide-w:    1280px;
+    --slide-h:    720px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0e17;
+    font-family: var(--body-font);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 32px 16px 48px;
+  }
+
+  /* ── Nav ─────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(17,24,39,.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(74,144,217,.25);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    z-index: 100;
+    flex-wrap: wrap;
+  }
+  nav span { color: var(--steel-lt); font-size: 11px; margin-right: 4px; }
+  nav a {
+    color: rgba(255,255,255,.6);
+    font-size: 11px;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.12);
+    transition: .2s;
+  }
+  nav a:hover { background: rgba(74,144,217,.2); color: #fff; }
+
+  body { padding-top: 70px; }
+
+  /* ── Slide wrapper ───────────────────────────────── */
+  .slide {
+    width: var(--slide-w);
+    height: var(--slide-h);
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.6);
+    flex-shrink: 0;
+  }
+
+  /* ── SLIDE 1 – Title ─────────────────────────────── */
+  .slide-title {
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 48px 72px;
+  }
+  .slide-title .deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .slide-title .c1 {
+    width: 560px; height: 560px;
+    top: -150px; right: -100px;
+    background: var(--navy-mid);
+  }
+  .slide-title .c2 {
+    width: 360px; height: 360px;
+    top: -60px; right: 20px;
+    background: #162840;
+  }
+  .slide-title .logo {
+    width: 420px;
+    max-width: 70%;
+    margin-bottom: 22px;
+    position: relative; z-index:2;
+  }
+  .slide-title h1 {
+    font-size: 62px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 8px;
+    line-height: 1.05;
+    position: relative; z-index:2;
+    margin-bottom: 12px;
+  }
+  .slide-title .subtitle {
+    font-size: 20px;
+    color: var(--steel);
+    font-style: italic;
+    font-weight: 300;
+    position: relative; z-index:2;
+    margin-bottom: 22px;
+  }
+  .slide-title .divider {
+    width: 320px;
+    height: 2px;
+    background: var(--steel);
+    margin-bottom: 18px;
+    position: relative; z-index:2;
+  }
+  .slide-title .tagline {
+    font-size: 14px;
+    color: var(--steel-lt);
+    line-height: 1.7;
+    position: relative; z-index:2;
+    max-width: 560px;
+  }
+  .slide-title .web {
+    position: relative;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--steel);
+    z-index: 2;
+    letter-spacing: 1px;
+  }
+
+  /* ── SLIDE 2 – O společnosti ─────────────────────── */
+  .slide-about {
+    background: var(--navy);
+    padding: 42px 64px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .slide-about .logo-sm {
+    width: 260px;
+    max-height: 68px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+  .slide-about h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 4px;
+    margin-bottom: 28px;
+  }
+  .cards-row {
+    display: flex;
+    gap: 24px;
+  }
+  .info-card {
+    flex: 1;
+    background: var(--navy-card);
+    border-radius: 14px;
+    padding: 28px 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  }
+  .info-card .icon { font-size: 36px; margin-bottom: 12px; }
+  .info-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--steel);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .info-card p {
+    font-size: 13px;
+    color: #A8C0D6;
+    line-height: 1.7;
+  }
+
+  /* ── SLIDE – Machine ──────────────────────────────── */
+  .slide-machine {
+    background: var(--light-bg);
+    display: flex;
+  }
+
+  /* Left: photo */
+  .machine-photo {
+    width: 58%;
+    position: relative;
+    flex-shrink: 0;
+    padding: 20px;
+  }
+  .machine-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    display: block;
+  }
+  .machine-photo .placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 15px;
+    font-style: italic;
+  }
+  .badge {
+    position: absolute;
+    top: 32px; left: 32px;
+    width: 52px; height: 52px;
+    background: var(--steel);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    z-index: 2;
+    box-shadow: 0 4px 14px rgba(74,144,217,.5);
+  }
+  .machine-footer {
+    position: absolute;
+    bottom: 32px; left: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+  .machine-footer img {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .machine-footer span {
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* Right: specs panel */
+  .machine-panel {
+    flex: 1;
+    background: var(--navy-mid);
+    padding: 28px 28px 0 28px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 20px 20px 0;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    overflow: hidden;
+  }
+  .machine-panel h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .machine-panel .cat {
+    font-size: 11px;
+    color: var(--steel);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .panel-divider {
+    height: 1px;
+    background: rgba(255,255,255,.1);
+    margin-bottom: 14px;
+  }
+  .spec-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--steel);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .spec-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .spec-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .spec-row:nth-child(odd)  { color: #fff; }
+  .spec-row:nth-child(even) { color: #A8C0D6; }
+  .spec-dot {
+    width: 5px; height: 5px;
+    background: var(--steel);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .price-box {
+    margin: 16px -28px 0;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .price-box.has-price { background: var(--gold); }
+  .price-box.no-price  { background: #2D4A6B; }
+  .price-box .price-text {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .price-box.has-price .price-text { color: var(--navy); font-size: 22px; }
+  .price-box.no-price  .price-text { color: #fff; }
+  .avail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(34,197,94,.15);
+    border: 1px solid rgba(34,197,94,.35);
+    color: #4ade80;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: .5px;
+    margin-bottom: 10px;
+  }
+  .avail-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── SLIDE – Contact ──────────────────────────────── */
+  .slide-contact {
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 56px 80px;
+  }
+  .slide-contact .deco-circle { position: absolute; border-radius: 50%; pointer-events: none; }
+  .slide-contact .c1 {
+    width: 500px; height: 500px;
+    bottom: -150px; right: -80px;
+    background: var(--navy-mid);
+  }
+  .slide-contact .c2 {
+    width: 300px; height: 300px;
+    bottom: -60px; right: 40px;
+    background: #162840;
+  }
+  .slide-contact .logo { width: 260px; margin-bottom: 28px; }
+  .slide-contact h2 {
+    font-size: 36px; font-weight: 800;
+    color: #fff; letter-spacing: 4px;
+    margin-bottom: 8px; position: relative; z-index:2;
+  }
+  .slide-contact .tagline {
+    font-size: 14px; color: var(--steel-lt);
+    font-style: italic; margin-bottom: 20px;
+    position: relative; z-index:2;
+  }
+  .contact-list { display: flex; flex-direction: column; gap: 10px; position: relative; z-index:2; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 16px;
+    color: #fff;
+  }
+  .contact-item .ci-icon {
+    width: 42px; height: 42px;
+    background: rgba(74,144,217,.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .contact-item.web { color: var(--steel); }
+
+  /* ── Double photo layout ────────────────────────── */
+  .machine-photo-double {
+    width: 58%;
+    position: relative;
+    flex-shrink: 0;
+    padding: 20px 10px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .machine-photo-double .photo-top {
+    flex: 1.2;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,.2);
+    position: relative;
+  }
+  .machine-photo-double .photo-bottom {
+    flex: 0.8;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,.2);
+  }
+  .machine-photo-double img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .machine-photo-double .placeholder {
+    width: 100%; height: 100%;
+    background: var(--card-bg);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 13px; font-style: italic;
+  }
+  /* Dual price box */
+  .price-box-dual {
+    margin: 12px -28px 0;
+    display: flex;
+  }
+  .price-box-dual .price-option {
+    flex: 1;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .price-box-dual .price-option:first-child {
+    background: #2D4A6B;
+    border-radius: 0;
+  }
+  .price-box-dual .price-option:last-child {
+    background: var(--gold);
+    border-radius: 0;
+  }
+  .price-box-dual .price-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .price-box-dual .price-option:first-child .price-label { color: #8EB8E2; }
+  .price-box-dual .price-option:last-child  .price-label { color: rgba(0,0,0,.5); }
+  .price-box-dual .price-val {
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .price-box-dual .price-option:first-child .price-val { color: #fff; }
+  .price-box-dual .price-option:last-child  .price-val { color: var(--navy); }
+
+  /* ── Print ───────────────────────────────────────── */
+  @media print {
+    body { background: #fff; padding: 0; gap: 0; }
+    nav { display: none; }
+    .slide {
+      width: 100vw; height: 56.25vw;
+      max-width: none;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+  }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1300px) {
+    :root { --slide-w: 98vw; }
+    .slide { height: calc(var(--slide-w) * 0.5625); }
+  }
+
+
+  /* ══════════════════════════════════════════════════════
+     HAWKTECH PREMIUM THEME – podle dodaného loga
+     tmavý grafit, kovový chrom, ledově modrý akcent
+  ══════════════════════════════════════════════════════ */
+  :root {
+    --navy:       #101820;
+    --navy-mid:   #172532;
+    --navy-card:  rgba(20, 32, 42, .86);
+    --steel:      #7fd6ee;
+    --steel-lt:   #d8f4ff;
+    --light-bg:   #0f171f;
+    --card-bg:    #182733;
+    --gold:       #9fdff1;
+    --white:      #ffffff;
+    --text-dark:  #eaf7fb;
+    --muted:      #9fb2bd;
+    --chrome:     #dce7ec;
+    --cyan-glow:  rgba(127, 214, 238, .34);
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 50% -10%, rgba(127,214,238,.18), transparent 36%),
+      linear-gradient(135deg, #05080c 0%, #101820 45%, #070b10 100%);
+  }
+
+  nav {
+    background: rgba(7, 12, 18, .88);
+    border-bottom: 1px solid rgba(127,214,238,.28);
+    box-shadow: 0 14px 40px rgba(0,0,0,.45), inset 0 -1px 0 rgba(255,255,255,.05);
+  }
+  nav span { color: var(--steel-lt); font-weight: 700; letter-spacing: .5px; }
+  nav a {
+    color: rgba(225,245,250,.72);
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(127,214,238,.20);
+  }
+  nav a:hover {
+    background: linear-gradient(135deg, rgba(127,214,238,.22), rgba(255,255,255,.06));
+    color: #fff;
+    box-shadow: 0 0 18px rgba(127,214,238,.22);
+  }
+
+  .slide {
+    border-radius: 22px;
+    border: 1px solid rgba(190,230,240,.16);
+    box-shadow: 0 28px 90px rgba(0,0,0,.72), 0 0 0 1px rgba(255,255,255,.04) inset;
+    background: #0f171f;
+  }
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 14%, rgba(255,255,255,.10), transparent 18%),
+      radial-gradient(circle at 78% 20%, rgba(127,214,238,.12), transparent 28%),
+      linear-gradient(115deg, transparent 0 45%, rgba(255,255,255,.035) 45% 46%, transparent 46% 100%);
+    z-index: 0;
+  }
+  .slide > * { position: relative; z-index: 1; }
+
+  .slide-title,
+  .slide-about,
+  .slide-contact {
+    background:
+      radial-gradient(circle at 20% 50%, rgba(127,214,238,.15), transparent 34%),
+      linear-gradient(135deg, #111b25 0%, #0b1118 48%, #1b2a35 100%);
+  }
+  .slide-title .deco-circle,
+  .slide-contact .deco-circle {
+    background: radial-gradient(circle, rgba(127,214,238,.20), rgba(127,214,238,.04) 48%, transparent 70%) !important;
+    filter: blur(.2px);
+  }
+  .slide-title .logo { width: 920px; max-width: 86%; max-height: 230px; object-fit: contain; margin-bottom: 18px; filter: drop-shadow(0 8px 24px rgba(0,0,0,.4)); }
+  .slide-title h1 {
+    color: var(--chrome);
+    letter-spacing: 7px;
+    text-shadow: 0 2px 0 rgba(255,255,255,.18), 0 0 28px rgba(127,214,238,.18), 0 12px 32px rgba(0,0,0,.7);
+  }
+  .slide-title .subtitle,
+  .slide-title .web,
+  .slide-contact .tagline { color: var(--steel-lt); }
+  .slide-title .divider {
+    height: 3px;
+    background: linear-gradient(90deg, #ffffff, #7fd6ee, transparent);
+    box-shadow: 0 0 18px rgba(127,214,238,.55);
+  }
+  .slide-title .tagline { color: #b9cdd5; }
+
+  .slide-about .logo-sm {
+    width: 260px;
+    max-width: 40%;
+    max-height: 68px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,.4));
+  }
+  .slide-contact .logo {
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,.4));
+  }
+  .slide-contact .logo {
+    width: 800px;
+    max-width: 80%;
+    max-height: 210px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+  .slide-about h2,
+  .slide-contact h2 {
+    color: var(--chrome);
+    text-shadow: 0 0 24px rgba(127,214,238,.18);
+  }
+  .info-card {
+    background: linear-gradient(145deg, rgba(25,38,49,.92), rgba(9,15,22,.92));
+    border: 1px solid rgba(127,214,238,.18);
+    box-shadow: 0 18px 42px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.08);
+  }
+  .info-card h3 { color: var(--steel); }
+  .info-card p { color: #bed0d8; }
+
+  .slide-machine {
+    background:
+      radial-gradient(circle at 30% 10%, rgba(127,214,238,.13), transparent 30%),
+      linear-gradient(135deg, #e9eef0 0%, #f8fbfc 48%, #dfe7eb 100%);
+  }
+  .machine-photo,
+  .machine-photo-double {
+    background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(225,235,240,.38));
+  }
+  .machine-photo img,
+  .machine-photo-double .photo-top,
+  .machine-photo-double .photo-bottom {
+    border: 1px solid rgba(15,24,32,.10);
+    background: #fff;
+    box-shadow: 0 22px 46px rgba(10,17,25,.22), inset 0 1px 0 rgba(255,255,255,.82);
+  }
+  .machine-photo img { object-fit: contain; padding: 10px; background: #fff; }
+  .machine-photo-double img { object-fit: contain; padding: 8px; background: #fff; }
+
+  .machine-panel {
+    background:
+      linear-gradient(155deg, rgba(35,50,61,.97), rgba(10,16,23,.98) 55%, rgba(23,38,50,.97));
+    border: 1px solid rgba(127,214,238,.22);
+    box-shadow: 0 24px 55px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.09);
+  }
+  .machine-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #7fd6ee, #fff, #7fd6ee, transparent);
+    opacity: .85;
+  }
+  .machine-panel h2 {
+    color: #f2fbff;
+    text-shadow: 0 0 18px rgba(127,214,238,.16);
+  }
+  .machine-panel .cat,
+  .spec-label { color: var(--steel); }
+  .panel-divider { background: linear-gradient(90deg, rgba(127,214,238,.42), transparent); }
+  .spec-row:nth-child(odd) { color: #f3fbff; }
+  .spec-row:nth-child(even) { color: #bfd1da; }
+  .spec-dot {
+    background: #9deaff;
+    box-shadow: 0 0 10px rgba(127,214,238,.8);
+  }
+  .badge {
+    background: linear-gradient(145deg, #eaf7fb, #74cce5 55%, #2b6d83);
+    color: #0b1218;
+    border: 1px solid rgba(255,255,255,.75);
+    box-shadow: 0 8px 22px rgba(0,0,0,.24), 0 0 26px rgba(127,214,238,.44);
+  }
+  .machine-footer {
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+  }
+  .machine-footer img { width: 145px; border: none !important; box-shadow: none !important; background: none !important; padding: 0 !important; }
+  .machine-footer span { color: #0b1218; font-weight: 700; text-shadow: none; }
+
+  .price-box.has-price,
+  .price-box-dual .price-option:last-child {
+    background: linear-gradient(135deg, #ffffff 0%, #9ee7f7 42%, #6dbbd0 100%);
+  }
+  .price-box.has-price .price-text,
+  .price-box-dual .price-option:last-child .price-val { color: #0b1218; }
+  .price-box.no-price,
+  .price-box-dual .price-option:first-child {
+    background: linear-gradient(135deg, #162532, #243846);
+  }
+  .avail-badge {
+    background: rgba(127,214,238,.11);
+    border-color: rgba(127,214,238,.42);
+    color: #c9f6ff;
+  }
+  .avail-badge::before { background: #7fd6ee; box-shadow: 0 0 12px rgba(127,214,238,.9); }
+
+  .contact-item .ci-icon {
+    background: linear-gradient(145deg, rgba(127,214,238,.22), rgba(255,255,255,.05));
+    border: 1px solid rgba(127,214,238,.22);
+  }
+  .contact-item.web { color: var(--steel-lt); }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <span>HawkTech katalog:</span>
+  <a href="#uvod">Úvod</a>
+  <a href="#o-nas">O nás</a>
+  <a href="#stroj-1">Fiber Laser</a>
+  <a href="#stroj-2">Elektr. tabulové nůžky</a>
+  <a href="#stroj-3">Bodová svářečka</a>
+  <a href="#stroj-4">Linka potrubí</a>
+  <a href="#stroj-5">XL15 Roller Press</a>
+  <a href="#stroj-6">W11G Zakružovačka</a>
+  <a href="#stroj-7">Flanžovač potrubí</a>
+  <a href="#stroj-8">LC-5005</a>
+  <a href="#stroj-9">Press Brake</a>
+  <a href="#stroj-10">Válcovací stroj</a>
+  <a href="#stroj-11">C/Z Purlinový stroj</a>
+  <a href="#stroj-12">Švová svářečka</a>
+  <a href="#stroj-13">CNC ohýbačka</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 1 – Titulní strana
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-title" id="uvod">
+  <div class="deco-circle c1"></div>
+  <div class="deco-circle c2"></div>
+
+  <img class="logo" src="3FB80826-BDF5-4570-864D-9C676A7333F5.png" alt="HawkTech s.r.o.">
+  <h1>KATALOG<br>STROJŮ</h1>
+  <div class="subtitle">Průmyslové stroje k prodeji</div>
+  <div class="divider"></div>
+  <div class="tagline">
+    Kvalitní stroje za konkurenceschopné ceny<br>
+    Dodávka, instalace a servis po celé Evropě
+  </div>
+
+  <span class="web">www.hawktech.cz</span>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 2 – O společnosti
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-about" id="o-nas">
+  <img class="logo-sm" src="3FB80826-BDF5-4570-864D-9C676A7333F5.png" alt="HawkTech">
+  <h2>O SPOLEČNOSTI</h2>
+  <div class="cards-row">
+    <div class="info-card">
+      <div class="icon">⚙️</div>
+      <h3>Specializace</h3>
+      <p>Prodej průmyslových strojů se zaměřením na zpracování kovu, laserové technologie a průmyslové výrobní linky.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🌍</div>
+      <h3>Dosah</h3>
+      <p>Dodávka, instalace a záruční i pozáruční servis po celé Evropě s důrazem na kvalitu a spolehlivost.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🤝</div>
+      <h3>Proč HawkTech</h3>
+      <p>Osobní přístup, rychlá komunikace a kompletní poprodejní podpora. Každý stroj prochází přejímkou před expedicí.</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">📦</div>
+      <h3>Dostupnost</h3>
+      <p>Vybrané stroje skladem v ČR. Možnost financování a leasingu. Individuální nabídka na vyžádání.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 3 – Fiber Laser
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-1">
+  <div class="machine-photo">
+    <img src="PHOTO-2026-06-19-03-29-26.jpg" alt="Fiber Laser">
+    <div class="badge">01</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>Fiber Laser 3015 – Plech &amp; Trubka</h2>
+    <div class="cat">CNC laserové řezání plechu a trubek – 6 000 W</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Pracovní plocha: <strong>3 015 mm (plech + trubka)</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon laseru: <strong>6 000 W – Chuangxin</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Upínací hlava: <strong>Ruika 240</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Laserová hlava: <strong>Baichu</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Řídicí systém: <strong>Baichu</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Servo / lineární vedení: <strong>Inovance / Penac</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Hřeben / převodovka: <strong>YYC / Motoli</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Chladič: <strong>Special Domain</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">1 450 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 4 – Hydraulické tabulové nůžky
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-2">
+  <div class="machine-photo">
+    <img src="stroj-02-nuzkyelektricke.png" alt="Elektrické tabulové nůžky">
+    <div class="badge">02</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>Elektrické tabulové nůžky</h2>
+    <div class="cat">Elektrické stříhání ocelového plechu</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. tloušťka plechu: <strong>&lt; 1,5 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. délka střihu: <strong>1 310 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Pevnost materiálu: <strong>40 kg/mm²</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. frekvence střihu: <strong>40 zdvihů/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Zdvih nože / úhel: <strong>60 mm / 1°20′</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Délka břitu: <strong>1 310 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon motoru: <strong>2,2 kW</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rozměry: <strong>1 700 × 750 × 1 050 mm</strong></span></div>
+    </div>
+    <div class="avail-badge">Skladem v ČR – 1 ks</div>
+    <div class="price-box has-price">
+      <span class="price-text">117 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 5 – Průmyslový stroj 3
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-3">
+  <div class="machine-photo">
+    <img src="stroj-03-svarecka.png" alt="Bodová svářečka">
+    <div class="badge">03</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>Bodová svářečka</h2>
+    <div class="cat">Pneumatická odporová bodová svářečka</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Jmenovitý výkon: <strong>75 kVA</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Vstupní napětí: <strong>jednofázové 380 V</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Vstupní proud: <strong>80 A</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Zatěžovatel: <strong>10%</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Napětí naprázdno: <strong>4,2 V</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Nastavení výkonu: <strong>počítačové, 99 úrovní</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Nastavení času: <strong>počítačové, 0–9,9 s</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Chlazení: <strong>vodní</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rozměry / Hmotnost: <strong>1700×880×420 mm / 240 kg</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">133 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 6 – Linka na výrobu kulatého potrubí
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-4">
+  <div class="machine-photo">
+    <img src="stroj-04-hvac.jpg" alt="HVAC Spirální linka potrubí">
+    <div class="badge">04</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>HVAC Spirální linka potrubí</h2>
+    <div class="cat">Spirálové potrubí – pozink, nerez, hliník, měď</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Délka potrubí: <strong>120–8 000 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Šířka pásu: <strong>137 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rychlost: <strong>1–36 m/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Tloušťka pozink: <strong>0,4–1,2 mm</strong> | nerez: <strong>0,4–0,8 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Tloušťka hliník: <strong>0,5–1,5 mm</strong> | měď: <strong>0,5–1,2 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Způsob spoje: <strong>vnější zámek (možno vnitřní)</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Řídicí systém: <strong>Hexin PLC, frekv. regulace</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon pohonu / řezání: <strong>5,5 kW / 4 kW</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Způsob řezání: <strong>pilový kotouč</strong></span></div>
+    </div>
+    <div class="avail-badge">Skladem v ČR – 1 ks</div>
+    <div class="price-box has-price">
+      <span class="price-text">855 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 7 – XL15 Electric Roller Press
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-5">
+  <div class="machine-photo">
+    <img src="stroj-05-xl15.png" alt="XL15 Electric Roller Press">
+    <div class="badge">05</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>XL15 – Electric Roller Press</h2>
+    <div class="cat">Elektrický válcovací lis na plech</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. tloušťka plechu: <strong>1,2 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Délka materiálu: <strong>neomezená</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon motoru: <strong>2,2 kW</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Otáčky motoru: <strong>1 400 ot/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Převodový poměr: <strong>30 : 1</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rychlost válcování: <strong>6,9 m/min</strong></span></div>
+    </div>
+    <div class="avail-badge">Skladem v ČR – 1 ks</div>
+    <div class="price-box has-price">
+      <span class="price-text">51 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 8 – W11G Tříválcová zakružovačka plechu
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-6">
+  <div class="machine-photo">
+    <img src="stroj-06-zakruzovacka.png" alt="W11G Tříválcová zakružovačka plechu">
+    <div class="badge">06</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>W11G-1.5×1300 Zakružovačka</h2>
+    <div class="cat">Tříválcová zakružovačka plechu</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Model: <strong>W11G-1.5×1300</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. tloušťka plechu: <strong>1,5 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. šířka plechu: <strong>1 300 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon motoru: <strong>1,5 kW</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rozměry: <strong>1 680 × 510 × 970 mm</strong></span></div>
+    </div>
+    <div class="avail-badge">Skladem v ČR – 1 ks</div>
+    <div class="price-box has-price">
+      <span class="price-text">47 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 9 – Flanžovač potrubí
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-7">
+  <div class="machine-photo">
+    <img src="flanzovac.png" alt="Flanžovač potrubí">
+    <div class="badge">07</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>Flanžovač potrubí</h2>
+    <div class="cat">Lemovací stroj pro kruhové potrubí a tvarovky</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Průměr zpracování: <strong>125–1 250 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Tloušťka plechu: <strong>0,35–1,2 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon motorů: <strong>2 × 1,5 kW</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Pracovní otáčky: <strong>24 / 10 ot/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Materiál: <strong>ocelový / pozinkovaný plech</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Kolena: <strong>φ200–φ1 000 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rovné potrubí: <strong>φ200–φ1 000 mm</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">120 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 10 – LC-5005 Pittsburský zámkovač
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-8">
+  <div class="machine-photo">
+    <img src="stroj-08-lc5005.png" alt="LC-5005 Pittsburský zámkovač">
+    <div class="badge">08</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>LC-5005 – Pittsburský zámkovač</h2>
+    <div class="cat">Standardní typ – 4 druhy pittsburských zámků</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Tloušťka plechu: <strong>0,5–1,2 mm (B &lt; 0,8 mm)</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon motoru: <strong>2,2 kW</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Hmotnost: <strong>360 kg</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rozměry: <strong>1 520 × 630 × 1 010 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Typy zámků: <strong>4 druhy pittsburských zámků</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">149 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 11 – Press Brake WE67K-125T/3200
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-9">
+  <div class="machine-photo">
+    <img src="stroj-09-pressbrake.png" alt="Press Brake WE67K-125T/3200">
+    <div class="badge">09</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>Press Brake WE67K-125T/3200</h2>
+    <div class="cat">Hydraulický ohraňovací lis – CNC DE15</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Jmenovitá síla: <strong>1 250 kN (125 t)</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Délka ohybu: <strong>3 200 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rozestup sloupů: <strong>2 600 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Zdvih / max. otevření: <strong>140 mm / 400 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rychlost: <strong>220 / 10 / 150 mm/s</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Přesnost polohy: <strong>±0,03 mm / ±0,02 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon motoru: <strong>7,5 kW / 1 440 ot/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>CNC systém / čerpadlo: <strong>DE15 / Shengbang</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Přesnost ohybu: <strong>±30′ / ±0,7 mm/m</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">900 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 12 – Dvouvrstvý / třívrstvý válcovací stroj
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-10">
+  <div class="machine-photo-double">
+    <div class="photo-top">
+      <img src="stroj-10-valcovaci.png" alt="Válcovací stroj trapézový">
+      <div class="badge" style="position:absolute;top:12px;left:12px;">10</div>
+    </div>
+    <div class="photo-bottom">
+      <img src="stroj-10-profily.png" alt="Trapézové profily">
+    </div>
+  </div>
+  <div class="machine-panel" style="margin:20px 20px 20px 10px;">
+    <h2>Stroj na tváření kovových střešních nebo stěnových panelů</h2>
+    <div class="cat">2vrstvý nebo 3vrstvý – bez výměny válců</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Profily: <strong>2–3 trapézové profily v 1 stroji</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Tloušťka materiálu: <strong>0,3–0,8 mm (PPGI, GI)</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. šířka svitku: <strong>1 250 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rychlost výroby: <strong>10–15 m/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Střih: <strong>hydraulický automatický</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Řízení: <strong>PLC + dotykový displej</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Hmotnost stroje: <strong>~3 000 kg</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Certifikace: <strong>CE, plná dokumentace</strong></span></div>
+    </div>
+    <div class="price-box-dual">
+      <div class="price-option">
+        <div class="price-label">2vrstvý stroj</div>
+        <div class="price-val">390 000 Kč</div>
+      </div>
+      <div class="price-option">
+        <div class="price-label">3vrstvý stroj</div>
+        <div class="price-val">550 000 Kč</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 0 4px 0;">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech" style="width:80px;opacity:.7;">
+      <span style="font-size:9px;color:#6B7E99;">www.hawktech.cz</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 13 – C/Z Purlinový válcovací stroj
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-11">
+  <div class="machine-photo">
+    <img src="stroj-11-czpurlin.png" alt="C/Z Purlinový válcovací stroj">
+    <div class="badge">11</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel" style="">
+    <h2>C/Z Purlinový válcovací stroj</h2>
+    <div class="cat">Automatická přestavba C / Z / U profilu bez výměny válců</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Profily: <strong>C, Z, U – automatická přestavba</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Šířka profilů: <strong>80–300 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Tloušťka materiálu: <strong>1,5–3,0 mm (ocel, pozink)</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rychlost výroby: <strong>25–40 m/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Řízení: <strong>PLC + dotykový displej, servo motor</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Děrování: <strong>automatické, CNC nastavitelné rozteče</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Střih: <strong>hydraulický, letový</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Hmotnost: <strong>~8 000 kg</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Certifikace: <strong>CE, plná dokumentace</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">1 850 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 14 – Odporová švová svářečka potrubí 100 KVA
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-12">
+  <div class="machine-photo">
+    <img src="stroj-12-svarecka-potrubi.png" alt="Odporová švová svářečka potrubí">
+    <div class="badge">12</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>Odporová švová svářečka potrubí</h2>
+    <div class="cat">100 KVA – Seam Welder – horizontální / vertikální</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Výkon: <strong>100 KVA</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Nerezová ocel: <strong>1 mm + 1 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Nízkouhlíková ocel: <strong>1,2 mm + 1,2 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Délka ramene elektrody: <strong>400 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Vstupní napětí / frekvence: <strong>380 V / 50 Hz</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Zatěžovatel: <strong>50 %</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rychlost svařování: <strong>0–2 m/min</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Zdvih elektrody: <strong>120 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Rozměry (H/V): <strong>1,3×0,7×1,9 m / 1,3×0,8×1,9 m</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Hmotnost (H/V): <strong>500 kg / 550 kg</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">397 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE 15 – CNC ohýbačka potrubí
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-machine" id="stroj-13">
+  <div class="machine-photo">
+    <img src="stroj-13-ohybacka.png" alt="CNC ohýbačka potrubí">
+    <div class="badge">13</div>
+    <div class="machine-footer">
+      <img src="ACFABA6A-8174-4E73-B458-43FB7B6E3A5C.png" alt="HawkTech">
+      <span>www.hawktech.cz</span>
+    </div>
+  </div>
+  <div class="machine-panel">
+    <h2>CNC ohýbačka potrubí</h2>
+    <div class="cat">Víceosé CNC ohýbání trubek a profilů</div>
+    <div class="panel-divider"></div>
+    <div class="spec-label">Technické parametry</div>
+    <div class="spec-list">
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. úhel ohybu: <strong>190°</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Max. průměr (ocel): <strong>114,3–120 mm / tl. 8,6 mm</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Přesnost ohybu: <strong>±0,1° (úhel i rotace)</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Počet řízených os: <strong>3–12 os</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Kompenzace odpružení: <strong>automatická, CNC</strong></span></div>
+      <div class="spec-row"><div class="spec-dot"></div><span>Automatizace: <strong>podávání, rotace, ohyb</strong></span></div>
+    </div>
+    <div class="price-box has-price">
+      <span class="price-text">890 000 Kč</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SLIDE – Kontakt
+══════════════════════════════════════════════════════ -->
+<div class="slide slide-contact" id="kontakt">
+  <div class="deco-circle c1"></div>
+  <div class="deco-circle c2"></div>
+
+  <img class="logo" src="3FB80826-BDF5-4570-864D-9C676A7333F5.png" alt="HawkTech">
+  <h2>KONTAKTUJTE NÁS</h2>
+  <p class="tagline">Máte zájem o stroj nebo chcete více informací?</p>
+
+  <div class="contact-list">
+    <div class="contact-item web">
+      <div class="ci-icon">🌐</div>
+      <span>www.hawktech.cz</span>
+    </div>
+    <div class="contact-item">
+      <div class="ci-icon">✉️</div>
+      <span>info@hawktech.cz</span>
+    </div>
+    <div class="contact-item">
+      <div class="ci-icon">✉️</div>
+      <span>sales@hawktech.cz</span>
+    </div>
+    <div class="contact-item">
+      <div class="ci-icon">📍</div>
+      <span>Česká republika</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
